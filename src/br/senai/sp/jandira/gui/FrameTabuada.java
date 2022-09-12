@@ -103,10 +103,11 @@ public class FrameTabuada {
 		labelResultadoTabuada.setText("RESULTADO:");
 		labelResultadoTabuada.setBounds(29, 315, 200, 30);
 		labelResultadoTabuada.setFont(fonteDosLabels);
-
+		
+		
 		JList<String> lista = new JList<String>();
+		
 		JScrollPane scroll = new JScrollPane(lista);
-
 		scroll.setBounds(29, 350, 350, 200);
 
 		// Eventos De Click
