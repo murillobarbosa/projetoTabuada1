@@ -15,10 +15,10 @@ public class AppTabuada {
 		tela.titulo = "Tabuada";
 		tela.altura = 750;
 		tela.largura = 450;
-		tela.corDeFundoDaTela = new Color(255, 0, 0);
+		tela.corDeFundoDaTela = new Color(150, 37, 150);
 		tela.fonteDosLabels = new Font("Cooper Black", Font.ITALIC, 16);
 		tela.corDoTextoDoBotao = new Color(0, 200, 80);
-		tela.corDoBotao = new Color(50, 0, 200);
+		tela.corDoBotao = new Color(150, 37, 150);
 		tela.criarTela();
 		
 		Tabuada tabuada = new Tabuada();
