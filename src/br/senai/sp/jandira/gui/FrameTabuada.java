@@ -112,59 +112,190 @@ public class FrameTabuada {
 
 		// Eventos De Click
 
-		buttonCalcularTabuada.addActionListener(new ActionListener() {
+				buttonCalcularTabuada.addActionListener(new ActionListener() {
 
-			@Override
-			public void actionPerformed(ActionEvent e) {
+					@Override
+					public void actionPerformed(ActionEvent e) {
 
-				Tabuada tabuada = new Tabuada();
+						Tabuada tabuada = new Tabuada();
+						
+						tabuada.multiplicando = Integer.parseInt(textFieldMultiplicando.getText());
+						tabuada.minimoMultiplicador = Integer.parseInt(textFieldMinimoMultiplicador.getText());
+						tabuada.maximoMultiplicador = Integer.parseInt(textFieldMaximoMultiplicador.getText());
+						
+						String[] resultado = tabuada.getTabuada();
+						lista.setListData(resultado);
+						
+						scroll.setVisible(true);
+						
+					}
+
+				});
 				
-				tabuada.multiplicando = Integer.parseInt(textFieldMultiplicando.getText());
-				tabuada.minimoMultiplicador = Integer.parseInt(textFieldMinimoMultiplicador.getText());
-				tabuada.maximoMultiplicador = Integer.parseInt(textFieldMaximoMultiplicador.getText());
+				buttonLimpar.addActionListener(new ActionListener() {
+
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						
+						String[] limpar = {" "};
+						lista.setListData(limpar);
+						textFieldMultiplicando.setText("");
+						textFieldMinimoMultiplicador.setText("");
+						textFieldMaximoMultiplicador.setText("");
+						
+						
+					}
+					
+				});
 				
-				String[] resultado = tabuada.getTabuada();
-				lista.setListData(resultado);
 				
-				scroll.setVisible(true);
 				
+						// Eventos de click
+				buttonCalcularTabuada.addActionListener(new ActionListener() {
+							
+							@Override
+							public void actionPerformed(ActionEvent e) {
+								
+								Tabuada tabuada = new Tabuada();
+								
+								
+								
+								
+								
+								if (textFieldMaximoMultiplicador.getText().isEmpty() || textFieldMinimoMultiplicador.getText().isEmpty()
+										|| textFieldMultiplicando.getText().isEmpty()) {
+
+								JOptionPane.showMessageDialog(null, "Você não colocou os multiplicadores. Por favor preencha!","Aviso", JOptionPane.WARNING_MESSAGE);
+								}else {
+								 
+								tabuada.multiplicando = Integer.parseInt(textFieldMultiplicando.getText());
+								tabuada.minimoMultiplicador = Integer.parseInt(textFieldMinimoMultiplicador.getText());
+								tabuada.maximoMultiplicador = Integer.parseInt(textFieldMaximoMultiplicador.getText());
+								}
+								
+								if (tabuada.maximoMultiplicador <= tabuada.minimoMultiplicador) {
+									JOptionPane.showMessageDialog(null, "Você colocou o Maximo multiplicador menor que o Minimo Multiplicador.Coloque os números de forma correta! ","Aviso", JOptionPane.WARNING_MESSAGE);
+									}else {
+								String[] resultado = tabuada.getTabuada();
+								lista.setListData(resultado);
+								
+								scroll.setVisible(true);
+									}
+								
+								
+							}
+						});
+						
+						//Função para limpar as caixas de texto
+						buttonLimpar.addActionListener(new ActionListener() {
+							
+							@Override
+							public void actionPerformed(ActionEvent e) {
+								
+								String[] limpar = {" "};
+								lista.setListData(limpar);
+								textFieldMultiplicando.setText("");
+								textFieldMinimoMultiplicador.setText("");
+								textFieldMaximoMultiplicador.setText("");
+								
+							}
+						});
+						
+						//Função para impedir de digitar letras
+						
+						
+						textFieldMaximoMultiplicador.addKeyListener(new KeyListener() {
+							
+							@Override
+							public void keyTyped(KeyEvent e) {
+								textFieldMaximoMultiplicador.setText(textFieldMaximoMultiplicador.getText().replaceAll("[^0-9]", ""));
+								if (textFieldMaximoMultiplicador.getText().length() > 9) {
+									
+								}
+								
+							}
+							
+							@Override
+							public void keyReleased(KeyEvent e) {
+								// TODO Auto-generated method stub
+								
+							}
+							
+							@Override
+							public void keyPressed(KeyEvent e) {
+								// TODO Auto-generated method stub
+								
+							}
+						});
+						
+						textFieldMinimoMultiplicador.addKeyListener(new KeyListener() {
+							
+							@Override
+							public void keyTyped(KeyEvent e) {
+								textFieldMinimoMultiplicador.setText(textFieldMinimoMultiplicador.getText().replaceAll("[^0-9]", ""));
+								if (textFieldMinimoMultiplicador.getText().length() > 9) {
+									
+								}
+								
+								
+							}
+							
+							@Override
+							public void keyReleased(KeyEvent e) {
+								// TODO Auto-generated method stub
+								
+							}
+							
+							@Override
+							public void keyPressed(KeyEvent e) {
+								// TODO Auto-generated method stub
+								
+							}
+						});
+						
+						textFieldMultiplicando.addKeyListener(new KeyListener() {
+							
+							@Override
+							public void keyTyped(KeyEvent e) {
+								textFieldMultiplicando.setText(textFieldMultiplicando.getText().replaceAll("[^0-9]", ""));
+								if (textFieldMultiplicando.getText().length() > 9) {
+									
+								}
+								
+								
+							}
+							
+							@Override
+							public void keyReleased(KeyEvent e) {
+								// TODO Auto-generated method stub
+								
+							}
+							
+							@Override
+							public void keyPressed(KeyEvent e) {
+								// TODO Auto-generated method stub
+								
+							}
+						});
+				
+				
+				
+				
+
+				painel.add(buttonCalcularTabuada);
+				painel.add(buttonLimpar);
+				painel.add(labelTabuada);
+				painel.add(labelTexto);
+				painel.add(labelMultiplicando);
+				painel.add(textFieldMultiplicando);
+				painel.add(labelMinimoMultiplicador);
+				painel.add(textFieldMinimoMultiplicador);
+				painel.add(labelMaximoMultiplicador);
+				painel.add(textFieldMaximoMultiplicador);
+				painel.add(labelResultadoTabuada);
+				painel.add(scroll);
+				painel.add(icon);
+				
+				tela.setVisible(true);
 			}
-
-		});
-		
-		buttonLimpar.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				
-				scroll.setVisible(false);
-				textFieldMultiplicando.setText("");
-				textFieldMinimoMultiplicador.setText("");
-				textFieldMaximoMultiplicador.setText("");
-				
-				
-			}
-			
-		});
-		
-		
-		
-		
-
-		painel.add(buttonCalcularTabuada);
-		painel.add(buttonLimpar);
-		painel.add(labelTabuada);
-		painel.add(labelTexto);
-		painel.add(labelMultiplicando);
-		painel.add(textFieldMultiplicando);
-		painel.add(labelMinimoMultiplicador);
-		painel.add(textFieldMinimoMultiplicador);
-		painel.add(labelMaximoMultiplicador);
-		painel.add(textFieldMaximoMultiplicador);
-		painel.add(labelResultadoTabuada);
-		painel.add(scroll);
-		 painel.add(icon);
-		
-		tela.setVisible(true);
-	}
-}
+		}
